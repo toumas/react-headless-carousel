@@ -22,8 +22,7 @@
     },
     "dependencies": {
         "prop-types": "^15.6.2",
-        "react": "^16.3.x",
-        "react-dom": "^16.6.0"
+        "react": "^16.3.x"
     },
     "devDependencies": {
         "@babel/core": "^7.1.2",
@@ -35,6 +34,7 @@
         "babel-loader": "^8.0.4",
         "jest": "^23.6.0",
         "jest-dom": "^2.1.0",
+        "react-dom": "^16.6.0",
         "react-testing-library": "^5.2.3",
         "regenerator-runtime": "^0.12.1",
         "webpack": "^4.22.0",
