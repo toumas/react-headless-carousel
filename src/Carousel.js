@@ -95,7 +95,7 @@ class Carousel extends React.Component {
             onSlideChange(activeSlideIndex);
         }
     };
-
+    // Sorry, I'm bad at computer science, Ryan
     getNextSlideIndex = (index, prevIndex, slideCount, loop) => {
         if (index > slideCount - 1 && loop) {
             return 0;
