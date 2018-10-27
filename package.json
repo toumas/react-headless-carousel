@@ -1,7 +1,7 @@
 {
     "name": "react-headless-carousel",
     "version": "1.0.0",
-    "description": "Highly extensible & flexbile \u001b[D\u001b[ible carousel component for React\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[C",
+    "description": "Highly extensible & flexbile carousel component for React",
     "main": "./lib/index.js",
     "repository": {
         "type": "git",
