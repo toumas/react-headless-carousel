@@ -224,11 +224,16 @@ const Slide = ({index, children, as: Component, preventUnmount, ...props}) => {
 };
 
 Slide.defaultProps = {
+    index: undefined,
+    as: undefined,
     preventUnmount: false,
 };
 
 Slide.propTypes = {
-    children: PropTypes.oneOfType([
+    children: PropTypes.oneOfType([PropTypes.element, PropTypes.func])
+        .isRequired,
+    index: PropTypes.number,
+    as: PropTypes.oneOfType([
         PropTypes.element,
         PropTypes.func,
         PropTypes.string,
