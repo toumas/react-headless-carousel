@@ -213,15 +213,7 @@ const Slide = ({index, children, as: Component, preventUnmount, ...props}) => {
             {({activeSlideIndex}) => {
                 if (index === activeSlideIndex || preventUnmount) {
                     if (Component) {
-                        return (
-                            <Component {...props}>
-                                {typeof children === 'function' ? (
-                                    children
-                                ) : (
-                                    children
-                                )}
-                            </Component>
-                        );
+                        return <Component {...props}>{children}</Component>;
                     }
                     return children;
                 }
