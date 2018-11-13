@@ -223,6 +223,20 @@ describe('slide', () => {
         );
         expect(cb).toHaveBeenCalledTimes(1);
     });
+    it('prevents unmount', () => {
+        const {getByText} = render(
+            <Carousel>
+                <Slide preventUnmount={true}>
+                    <div>foo</div>
+                </Slide>
+                <Slide>
+                    <div>bar</div>
+                </Slide>
+            </Carousel>,
+        );
+        jest.runOnlyPendingTimers();
+        expect(getByText(/^foo/)).toHaveTextContent('foo');
+    });
 });
 
 describe('control', () => {

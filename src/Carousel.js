@@ -207,11 +207,11 @@ Carousel.propTypes = {
     onSlideChange: PropTypes.func,
 };
 
-const Slide = ({index, children, as: Component, ...props}) => {
+const Slide = ({index, children, as: Component, preventUnmount, ...props}) => {
     return (
         <Context.Consumer>
             {({activeSlideIndex}) => {
-                if (index === activeSlideIndex) {
+                if (index === activeSlideIndex || preventUnmount) {
                     if (Component) {
                         return (
                             <Component {...props}>
@@ -231,12 +231,17 @@ const Slide = ({index, children, as: Component, ...props}) => {
     );
 };
 
+Slide.defaultProps = {
+    preventUnmount: false,
+};
+
 Slide.propTypes = {
     children: PropTypes.oneOfType([
         PropTypes.element,
         PropTypes.func,
         PropTypes.string,
     ]),
+    preventUnmount: PropTypes.bool,
 };
 
 const Control = ({children}) => {
