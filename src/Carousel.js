@@ -161,7 +161,21 @@ class Carousel extends React.Component {
     };
 
     render () {
-        const {children} = this.props;
+        const {children, as: Component, ...props} = this.props;
+
+        if (Component) {
+            return (
+                <Context.Provider value={this.state}>
+                    <Component {...props}>
+                        {typeof children === 'function' ? (
+                            children
+                        ) : (
+                            this.renderChildren(children)
+                        )}
+                    </Component>
+                </Context.Provider>
+            );
+        }
         return (
             <Context.Provider value={this.state}>
                 {this.renderChildren(children)}
@@ -184,6 +198,7 @@ Carousel.propTypes = {
         PropTypes.arrayOf(
             PropTypes.oneOfType([PropTypes.element, PropTypes.array]),
         ),
+        PropTypes.func,
     ]).isRequired,
     autoplay: PropTypes.bool,
     interval: PropTypes.number,
@@ -192,18 +207,36 @@ Carousel.propTypes = {
     onSlideChange: PropTypes.func,
 };
 
-const Slide = ({index, children}) => {
+const Slide = ({index, children, as: Component, ...props}) => {
     return (
         <Context.Consumer>
             {({activeSlideIndex}) => {
-                return index === activeSlideIndex ? children : null;
+                if (index === activeSlideIndex) {
+                    if (Component) {
+                        return (
+                            <Component {...props}>
+                                {typeof children === 'function' ? (
+                                    children
+                                ) : (
+                                    children
+                                )}
+                            </Component>
+                        );
+                    }
+                    return children;
+                }
+                return null;
             }}
         </Context.Consumer>
     );
 };
 
 Slide.propTypes = {
-    children: PropTypes.element.isRequired,
+    children: PropTypes.oneOfType([
+        PropTypes.element,
+        PropTypes.func,
+        PropTypes.string,
+    ]),
 };
 
 const Control = ({children}) => {

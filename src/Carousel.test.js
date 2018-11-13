@@ -174,6 +174,21 @@ describe('Carousel', () => {
         jest.runOnlyPendingTimers();
         expect(stateReducer).toHaveBeenCalledTimes(1);
     });
+    it('renders children of as prop', () => {
+        const Foo = ({children}) => children;
+        const {getByText} = render(
+            <Carousel as={Foo}>
+                <div>foo</div>
+            </Carousel>,
+        );
+        expect(getByText(/^foo/)).toHaveTextContent('foo');
+    });
+    it('invokes children function of as prop', () => {
+        const cb = jest.fn(() => null);
+        const Foo = ({children}) => children();
+        render(<Carousel as={Foo}>{cb}</Carousel>);
+        expect(cb).toHaveBeenCalledTimes(1);
+    });
 });
 
 describe('slide', () => {
@@ -186,6 +201,27 @@ describe('slide', () => {
             </Carousel>,
         );
         expect(getByText(/^foo/)).toHaveTextContent('foo');
+    });
+    it('renders children of as prop', () => {
+        const Foo = ({children}) => children;
+        const {getByText} = render(
+            <Carousel>
+                <Slide as={Foo}>
+                    <div>foo</div>
+                </Slide>
+            </Carousel>,
+        );
+        expect(getByText(/^foo/)).toHaveTextContent('foo');
+    });
+    it('invokes children function of as prop', () => {
+        const cb = jest.fn(() => null);
+        const Foo = ({children}) => children();
+        render(
+            <Carousel>
+                <Slide as={Foo}>{cb}</Slide>
+            </Carousel>,
+        );
+        expect(cb).toHaveBeenCalledTimes(1);
     });
 });
 
