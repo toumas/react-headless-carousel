@@ -32,12 +32,12 @@
         "babel-core": "^7.0.0-bridge.0",
         "babel-jest": "^23.6.0",
         "babel-loader": "^8.0.4",
-        "jest": "^23.6.0",
+        "jest": "^29.3.1",
         "jest-dom": "^2.1.0",
         "react-dom": "^16.6.0",
         "react-testing-library": "^5.2.3",
         "regenerator-runtime": "^0.12.1",
-        "webpack": "^4.22.0",
-        "webpack-cli": "^3.1.2"
+        "webpack": "^5.75.0",
+        "webpack-cli": "^5.0.1"
     }
 }
